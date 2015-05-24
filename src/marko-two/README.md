@@ -9,6 +9,8 @@ lasso --main main.js --inject-into index.html --plugins lasso-marko lasso-less -
 
 ## results
 
-- Single template: [./static/index-932e1e1c.js](../marko-single/static/index-932e1e1c.js): 20.3kb
-- Two templates: [./static/index-d4a38759.js](../marko-single/static/index-d4a38759.js): 20.7kb
-- Each marko template adds ~400bytes of overhead.
+Results were compiled with [Google's Closure Compiler](https://closure-compiler.appspot.com/home)
+
+- Single template: [./static/index-932e1e1c.js](../marko-single/static/index-932e1e1c.js): 5.51KB gzipped (20.3kb unzipped)
+- Two templates: [./static/index-d4a38759.js](../marko-single/static/index-d4a38759.js): 5.57KB gzipped
+- Each marko template adds ~60bytes of overhead.
