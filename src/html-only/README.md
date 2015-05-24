@@ -9,4 +9,6 @@ lasso --main main.js --inject-into index.html --plugins lasso-less --production
 
 ## results
 
-[./static/index-40b61b3c.js](./static/index-40b61b3c.js): 3.3kb
+Results were compiled with [Google's Closure Compiler](https://closure-compiler.appspot.com/home)
+
+[./static/index-40b61b3c.js](./static/index-40b61b3c.js): 1.44KB gzipped (3.3kb unzipped)
