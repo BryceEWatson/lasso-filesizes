@@ -3,15 +3,17 @@ Testing the various compressed &amp; uncompressed file sizes for common lasso re
 
 # results
 
+Results were compiled with [Google's Closure Compiler](https://closure-compiler.appspot.com/home)
+
 - html / pure JS
-  - 3.3kb
+  - 1.44KB gzipped (3.3kb unzipped)
 - jQuery only
-  - 96.4kb
+  - 29.89KB gzipped (96.4kb unzipped)
 - single marko template
-  - 20.3kb
+  - 5.51KB gzipped (20.3kb unzipped)
 - two marko templates
-  - 20.7kb, difference of ~400bytes
+  - 5.57KB gzipped, difference of ~60bytes
 - single marko-widget
-  - 54.3kb
+  - 14.19KB gzipped (54.3kb unzipped)
 - two marko-widgets
-  - 55.3kb, difference of ~1kb
+  - 14.22KB gzipped (55.3kb unzipped), difference of ~30bytes
