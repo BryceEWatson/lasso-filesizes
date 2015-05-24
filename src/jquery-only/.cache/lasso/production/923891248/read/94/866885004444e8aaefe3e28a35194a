@@ -1,0 +1,6 @@
+$rmod.def("/main", function(require, exports, module, __filename, __dirname) { var jquery = require('/$/jquery'/*'jquery'*/);
+
+jquery(function() {
+    $(document.body).append('jQuery was here.');
+});
+});

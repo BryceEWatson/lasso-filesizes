@@ -1,0 +1,13 @@
+$rmod.def("/template.marko", function(require, exports, module, __filename, __dirname) { exports.create = function(__helpers) {
+  var str = __helpers.s,
+      empty = __helpers.e,
+      notEmpty = __helpers.ne,
+      escapeXml = __helpers.x;
+
+  return function render(data, out) {
+    out.w('<div>a simple ' +
+      escapeXml(marko) +
+      ' template</div>');
+  };
+}
+});

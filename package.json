@@ -1,0 +1,22 @@
+{
+  "name": "lasso-filesizes",
+  "version": "1.0.0",
+  "description": "Testing file sizes for common compressed & uncompressed resources.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BryceEWatson/lasso-filesizes.git"
+  },
+  "keywords": [
+    "lasso-js"
+  ],
+  "author": "Bryce Watson (BryceEWatson@gmail.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BryceEWatson/lasso-filesizes/issues"
+  },
+  "homepage": "https://github.com/BryceEWatson/lasso-filesizes"
+}

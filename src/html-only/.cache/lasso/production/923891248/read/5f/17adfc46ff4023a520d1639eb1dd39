@@ -1,0 +1,2 @@
+$rmod.def("/main", function(require, exports, module, __filename, __dirname) { console.log('Javascript was here');
+});

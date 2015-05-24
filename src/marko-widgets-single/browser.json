@@ -1,0 +1,8 @@
+{
+    "dependencies": [
+        "require: marko-widgets",
+        "require: ./widget_one",
+        "./main.js",
+        "./style.less"
+    ]
+}

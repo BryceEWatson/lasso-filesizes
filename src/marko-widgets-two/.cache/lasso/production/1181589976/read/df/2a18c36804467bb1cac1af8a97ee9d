@@ -1,0 +1,44 @@
+$rmod.def("/widget_two/template.marko", function(require, exports, module, __filename, __dirname) { exports.create = function(__helpers) {
+  var str = __helpers.s,
+      empty = __helpers.e,
+      notEmpty = __helpers.ne,
+      __markoWidgets = require('/$/marko-widgets'/*"marko-widgets"*/),
+      _widgetAttrs = __markoWidgets.attrs,
+      __ = "/widget_two",
+      __renderer = __helpers.r,
+      ___node_modules_marko_widgets_taglib_widget_tag_js = __renderer(require('/$/marko-widgets/taglib/widget-tag'/*"marko-widgets/taglib/widget-tag"*/)),
+      __tag = __helpers.t,
+      attr = __helpers.a,
+      attrs = __helpers.as,
+      escapeXml = __helpers.x;
+
+  function __registerWidget() {
+    if (typeof window != "undefined") {
+      __markoWidgets.registerWidget(__, require("./"));
+    }
+  }
+
+  return function render(data, out) {
+    if (__registerWidget) {
+      __registerWidget();
+      __registerWidget = null;
+    }
+    
+    __tag(out,
+      ___node_modules_marko_widgets_taglib_widget_tag_js,
+      {
+        "module": __,
+        "_cfg": data.widgetConfig,
+        "_state": data.widgetState
+      },
+      function(out, widget) {
+        out.w('<div' +
+          attr("id", widget.elId()) +
+          attrs(_widgetAttrs(widget)) +
+          '>Widget two says ' +
+          escapeXml(hello) +
+          '!</div>');
+      });
+  };
+}
+});

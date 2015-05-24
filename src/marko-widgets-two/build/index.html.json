@@ -1,0 +1,4 @@
+{
+    "body": "<script type=\"text/javascript\" src=\"%STATIC_PATH%/index-d19fa67b.js\"></script>\n<script type=\"text/javascript\">$rmod.ready();</script>",
+    "head": "<link rel=\"stylesheet\" type=\"text/css\" href=\"%STATIC_PATH%/index-3d3e28b8.css\">"
+}

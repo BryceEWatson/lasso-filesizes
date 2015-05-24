@@ -1,0 +1,5 @@
+$rmod.def("/raptor-async@1.1.1/DataHolder", function(require, exports, module, __filename, __dirname) { /**
+ * Deprecated. Use require('raptor-async/AsyncValue') instead.
+ */
+module.exports = require('./AsyncValue');
+});

@@ -1,0 +1,111 @@
+$rmod.def("/marko-widgets@4.0.1/taglib/widget-tag", function(require, exports, module, __filename, __dirname) { 'use strict';
+var widgets = require('/$/marko-widgets'/*'../'*/);
+var extend = require('/$/marko-widgets/$/raptor-util/extend'/*'raptor-util/extend'*/);
+
+var DUMMY_WIDGET_DEF = {
+        elId: function () {
+        }
+    };
+
+module.exports = function render(input, out) {
+    var global = out.global;
+
+    if (!global.__widgetsBeginAsyncAdded) {
+        global.__widgetsBeginAsyncAdded = true;
+        out.on('beginAsync', function(event) {
+            var parentAsyncWriter = event.parentWriter;
+            var asyncWriter = event.writer;
+            var widgetsContext = global.widgets;
+            var widgetStack;
+
+            if (widgetsContext && (widgetStack = widgetsContext.widgetStack).length) {
+                // All of the widgets in this async block should be
+                // initialized after the widgets in the parent. Therefore,
+                // we will create a new WidgetsContext for the nested
+                // async block and will create a new widget stack where the current
+                // widget in the parent block is the only widget in the nested
+                // stack (to begin with). This will result in top-level widgets
+                // of the async block being added as children of the widget in the
+                // parent block.
+                var nestedWidgetsContext = new widgets.WidgetsContext(out);
+                nestedWidgetsContext.widgetStack = [widgetStack[0]];
+                asyncWriter.data.widgets = nestedWidgetsContext;
+            }
+
+            asyncWriter.data.widgetArgs = parentAsyncWriter.data.widgetArgs;
+        });
+    }
+
+    var modulePath = input.module;
+    var config = input.config || input._cfg;
+    var state = input.state || input._state;
+    var widgetArgs = out.data.widgetArgs;
+    var bodyElId = input.body;
+
+    var id = input.id;
+    var extendList;
+    var domEvents = input.domEvents;
+    var customEvents;
+    var scope;
+    var extendState;
+    var extendConfig;
+
+    if (widgetArgs) {
+        delete out.data.widgetArgs;
+        id = widgetArgs.id || id;
+        extendList = widgetArgs.extend;
+        customEvents = widgetArgs.customEvents;
+        scope = widgetArgs.scope;
+
+        if ((extendState = widgetArgs.extendState)) {
+            if (state) {
+                extend(state, extendState);
+            } else {
+                state = extendState;
+            }
+        }
+
+        if ((extendConfig = widgetArgs.extendConfig)) {
+            if (config) {
+                extend(config, extendConfig);
+            } else {
+                config = extendConfig;
+            }
+        }
+    }
+
+    var rerenderWidget = global.__rerenderWidget;
+    var widgetsContext = widgets.getWidgetsContext(out);
+
+    if (rerenderWidget) {
+        id = rerenderWidget.id;
+        delete global.__rerenderWidget;
+    }
+
+    if (!id && input.hasOwnProperty('id')) {
+        throw new Error('Invalid widget ID for "' + modulePath + '"');
+    }
+
+    if (modulePath) {
+        var widgetDef = widgetsContext.beginWidget({
+            module: modulePath,
+            id: id,
+            config: config,
+            state: state,
+            domEvents: domEvents,
+            customEvents: customEvents,
+            scope: scope,
+            createWidget: input.createWidget,
+            extend: extendList,
+            existingWidget: rerenderWidget,
+            bodyElId: bodyElId
+        });
+
+        input.renderBody(out, widgetDef);
+
+        widgetDef.end();
+    } else {
+        input.renderBody(out, DUMMY_WIDGET_DEF);
+    }
+};
+});

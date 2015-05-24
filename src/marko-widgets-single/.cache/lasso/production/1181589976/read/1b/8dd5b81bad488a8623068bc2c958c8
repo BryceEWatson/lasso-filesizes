@@ -1,0 +1,2 @@
+$rmod.def("/marko-widgets@4.0.1/lib/client-init", function(require, exports, module, __filename, __dirname) { require('./init-widgets').initServerRendered();
+});
