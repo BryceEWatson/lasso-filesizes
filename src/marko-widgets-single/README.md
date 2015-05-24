@@ -9,6 +9,8 @@ lasso --main main.js --inject-into index.html --plugins lasso-marko lasso-less -
 
 ## results
 
-[./static/index-48505bfd.js](./static/index-48505bfd.js): 54.3kb
+Results were compiled with [Google's closure compiler](https://closure-compiler.appspot.com/home)
 
-Initial cost of using marko widgets: 54.3kb.
+[./static/index-48505bfd.js](./static/index-48505bfd.js): 14.19KB gzipped (54.3kb unzipped)
+
+Initial cost of using marko widgets: ~14kb
